@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Force Layout Visualization</title>
-    <script src="./Lib/d3.v7.js"></script>
+    <title>Force Layout Visualization</title>
+    <script src="../Lib/d3.v7.js"></script>
 
     <style>
         body {
@@ -40,9 +40,9 @@
 
         #topContainer,
         #bottomContainer {
-            background-color: #3498db;
+            background-color: #FFC000	;
             padding: 15px;
-            border: 1px solid #2980b9;
+            border: 1px solid #000080;
             border-radius: 8px;
             margin-bottom: 15px;
             width: 100%;
@@ -66,7 +66,7 @@
 
         #topContainer button,
         #bottomContainer button {
-            background-color: #2ecc71;
+            background-color: green;
             color: white;
             padding: 12px 18px;
             border: none;
@@ -78,21 +78,20 @@
 
         #topContainer button:hover,
         #bottomContainer button:hover {
-            style("background-color", "#27ae60");
+            .style("background-color", "#27ae60");
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>MAJOR ASSIGNMENT 3</h1>
-    <h2>By</h2>
-    <h3>Sohel Najeer Shaikh</h3>
+    <h1>MAJOR ASSIGNMENT</h1>
+    <h2>ABHISHEK YERNAGULA</h2>
 </div>
 
 <div id="container">
     <div id="visualization">
         <!-- Your visualization content goes here -->
-        <svg id="visualization" viewBox="-200 50 3200 2200" style="align-content: center"></svg>
+        <svg id="visualization" viewBox="100 -100 3000 3000" style="align-content: center"></svg>
     </div>
     <div id="sideContainer">
         <div id="topContainer">
@@ -163,7 +162,7 @@
     }
 
     function upgrade() {
-        d3.json("authorsdatainfo.json").then(function (data) {
+        d3.json("authors.json").then(function (data) {
             const nodes = data.nodes;
             const edges = data.links;
             console.log("start")
@@ -203,8 +202,7 @@
                 .attr("stroke-width", 1.5);
 
             const numberOfColors = 80;
-            const viridisColors = Array.from({ length: numberOfColors }, (d, i) => d3.interpolateViridis(i / (numberOfColors - 1)));
-            const colorScale = d3.scaleOrdinal(viridisColors);
+            const colorScale = d3.scaleOrdinal(["red","green","blue"]);
 
             const node = main_group.selectAll(".node")
                 .data(nodes)
